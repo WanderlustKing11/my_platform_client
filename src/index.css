@@ -7,6 +7,43 @@ html {
   box-sizing: inherit;
 }
 
+/* Navbar */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  width: 240vh;
+}
+
+.header-ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eaeaea;
+}
+
+.header-li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: rgb(120, 120, 120);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #9c9c9c;
+}
+
+.active {
+  background-color: #44bfeb;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -122,8 +159,8 @@ form[action$="destroy"] button {
   align-items: center;
   margin: 0;
   padding: 1rem 2rem;
-  border-top: 1px solid #e3e3e3;
-  order: 1;
+  border-bottom: 1px solid #e3e3e3;
+  order: 0;
   line-height: 1;
 }
 
