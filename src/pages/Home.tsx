@@ -26,7 +26,6 @@ export default function Home() {
       ) : (
         <div id='sidebar'>
           <h1>Home Page</h1>
-          <p>Hello, World!</p>
           <FetchApiData />
         </div>
       )}
