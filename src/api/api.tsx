@@ -28,26 +28,25 @@ export default function FetchApiData() {
   // });
 
   //////////////////// WSC Login POST request //////////////////////////
-    // const data = {
-    //   "username": "Doug",
-    //   "password": "Goku",
-    //   "service": "service1",
-    // };
-
     const data = {
-      username: "jelly",
-      password: "password",
-      service: "service1",
-    }
+      "service": "service1",
+      "username": "Doug",
+      "password": "Goku",
+    };
+
+    // const data = {
+    //   username: "jelly",
+    //   password: "password",
+    //   service: "service1",
+    // }
 
   useEffect(() => {
-    fetch("https://serviceplatform-qxy4flwsca-uc.a.run.app/api/login", {
-      mode: "no-cors",
+    fetch("http://34.42.125.145:8080/api/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-type": "application/json"
-        },      
+        "Content-type": "application/json; charset=UTF-8"
+      }
     })
     .then((response) => response.json())
     .then((json) => {
