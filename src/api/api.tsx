@@ -63,9 +63,9 @@ export default function FetchApiData() {
 
   return (
     <>
-      <h3>
+      <h4>
         Here's the <em>test</em> API:
-      </h3>
+      </h4>
       <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
     </>
   );
