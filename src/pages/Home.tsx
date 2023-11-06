@@ -1,19 +1,27 @@
-// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import Login from './Login';
 // import FetchApiData from '../api/api';
 
 export default function Home() {
   // const location = useLocation();
   // const [activeLink, setActiveLink] = useState(location.pathname);
+  const [seen, setSeen] = useState(false);
+
+  function togglePopup() {
+    setSeen(!seen);
+    console.log("clicked!");
+  }
 
   return (
     <div>
       <Header />
       <div className='home-container'>
         <h2>Welcome To Whale Shark</h2>
-        <button><Link to='/register' className='home-btn'>Register</Link></button>
-        <button><Link to='/login' className='home-btn'>Login</Link></button>
+        <Link to='/register' className='home-btn'><button>Register</button></Link>
+        <button onClick={togglePopup}>Login</button>
+        {seen ? <Login toggle={togglePopup} /> : null}
       </div>
 
       {/* {loading ? (

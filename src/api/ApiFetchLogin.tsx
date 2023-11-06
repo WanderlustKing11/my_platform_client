@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function FetchApiData() {
+export default function ApiFetchLogin(username, password) {
   const [apiResponse, setApiResponse] = useState(null);
 
   /////////////// Test API requests ///////////////
@@ -30,8 +30,8 @@ export default function FetchApiData() {
   //////////////////// WSC Login POST request //////////////////////////
     const data = {
       "service": "service1",
-      "username": "Doug",
-      "password": "Goku",
+      "username": username,
+      "password": password,
     };
 
     // const data = {
@@ -58,14 +58,15 @@ export default function FetchApiData() {
   });
 
   if (apiResponse === null) {
-    return <p>Searching for data...</p>;
+    return <div>
+             <p>Loading data...</p>
+             <img className='spinner-img' id='search-spinner' src='https://bolt-gcdn.sc-cdn.net/3/8jXLtC9b4MJzw2WUAyqBK?bo=EhgaABoAMgF9OgEEQgYIp5mn9AVIAlASYAE%3D&uc=18' alt='search spinner icon' />
+           </div> 
   }
 
   return (
     <>
-      <h4>
-        Here's the <em>test</em> API:
-      </h4>
+      <p>Hello, {username}</p>
       <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
     </>
   );

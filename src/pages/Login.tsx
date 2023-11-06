@@ -1,33 +1,51 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import FetchApiData from '../api/api';
+import ApiFetchLogin from '../api/ApiFetchLogin';
 
-export default function Login() {
-    const [loading, setLoading] = useState(true);
-  
+export default function Login(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginSuccess, setLoginSuccess] = useState(false);
+
+  function handleLogin(e) {
+    e.preventDefault()
+    // Code to handle login goes here
     useEffect(() => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);    
-    }, []);
+      const response = loginSuccess(username, password);
 
-    return (
-        <div>
-          <Header />
-    
-          {loading ? (
-            <div className='loader'>
-              <p>Loading </p>
-              <img className='spinner-img' id='search-spinner' src='https://bolt-gcdn.sc-cdn.net/3/8jXLtC9b4MJzw2WUAyqBK?bo=EhgaABoAMgF9OgEEQgYIp5mn9AVIAlASYAE%3D&uc=18' alt='search spinner icon' />
-            </div>
-            
-            
-          ) : (
-            <div id='sidebar'>
-              <h1>Welcome to Whale Shark</h1>
-              <FetchApiData />
-            </div>
-          )}
-        </div>
-      );
+      if (response.ok) {
+        setLoginSuccess(true);
+
+      } else {
+        setLoginSuccess(false);
+      }
+      // catch (error)
+    });
+    props.toggle()
   }
+
+  return (
+    <div>
+      <Header />
+
+      <div className='popup'>
+        <div className='popup-inner'>
+          <h2>Login</h2>
+          <form onSubmit={handleLogin}>
+            <label>
+              Username:
+              <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
+            </label>
+            <label>
+              Password:
+              <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+            </label>
+            <button type='submit'>Login</button>
+          </form>
+          <button type='button' onClick={props.toggle}>Close</button>
+        </div>
+      </div>
+    </div>
+  );
+}
