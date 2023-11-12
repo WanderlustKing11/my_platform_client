@@ -214,6 +214,14 @@ color: #ffffff;
 cursor: not-allowed;
 }
 
+.account-container {
+  margin: 3rem;
+}
+
+.account-welcome-ws {
+  color: #0373db;
+}
+
 #contact h1 {
   display: flex;
   align-items: flex-start;

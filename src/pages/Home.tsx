@@ -2,16 +2,12 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import Login from './Login';
-// import FetchApiData from '../api/api';
 
 export default function Home() {
-  // const location = useLocation();
-  // const [activeLink, setActiveLink] = useState(location.pathname);
   const [seen, setSeen] = useState(false);
 
   function togglePopup() {
     setSeen(!seen);
-    console.log("clicked!");
   }
 
   return (

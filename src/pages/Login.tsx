@@ -1,37 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import ApiFetchLogin from '../api/ApiFetchLogin';
+import { useState, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { apiFetchLogin } from '../api/ApiFetchLogin'
 
-export default function Login(props) {
+interface LoginProps {
+  toggle: () => void;
+}
+
+export default function Login(props: LoginProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loginStatus, setLoginStatus] = useState('');
+  const navigate = useNavigate();
 
-  function handleLogin(e) {
+  async function handleLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    // Code to handle login goes here
-    useEffect(() => {
-      const response = loginSuccess(username, password);
+ 
+      const response = await apiFetchLogin(username, password);
 
-      if (response.ok) {
-        setLoginSuccess(true);
-
+      if (response && response.body && response.body.username) {
+        navigate('/success', {state: { username: response.body.username } });
       } else {
-        setLoginSuccess(false);
+        setLoginStatus('Login failed. Please check your username and password.');
       }
-      // catch (error)
-    });
-    props.toggle()
-  }
+    }
+  
 
   return (
     <div>
-      <Header />
-
       <div className='popup'>
         <div className='popup-inner'>
           <h2>Login</h2>
+          {loginStatus && <p className='error-message'>{loginStatus}</p>}
           <form onSubmit={handleLogin}>
             <label>
               Username:

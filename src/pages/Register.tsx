@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import FetchApiData from '../api/ApiFetchLogin';
+// import { apiFetchLogin } from '../api/apiFetchLogin';
 
 export default function Register() {
     // const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ export default function Register() {
           ) : ( */}
             <div id='sidebar'>
               <h1>Welcome to Whale Shark</h1>
-              <FetchApiData />
+              <FetchApiData username={''} password={''} />
             </div>
           {/* )} */}
         </div>
