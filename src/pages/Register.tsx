@@ -12,16 +12,23 @@ export default function Register(props: RegisterProps) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
+  const [passwordStatus, setPasswordStatus] = useState('');
   const navigate = useNavigate();
 
   function validatePassword() {
-    return password === confirmPassword;
+    // return password === confirmPassword;
+    if (password !== confirmPassword) {
+      setPasswordStatus("Passwords don't match");
+      return false;
+    } else {
+      setPasswordStatus('');
+      return true;
+    }
   }
 
   async function handleRegister(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!validatePassword()) {
-      setLoginStatus("Passwords don't match");
       return;
     }
  
@@ -44,7 +51,6 @@ export default function Register(props: RegisterProps) {
       <div className='popup'>
         <div className='popup-inner'>
           <h2>Register</h2>
-          {loginStatus && <p className='error-message'>{loginStatus}</p>}
           <form onSubmit={handleRegister}>
             <label>
               Username:
@@ -58,6 +64,8 @@ export default function Register(props: RegisterProps) {
               Confirm Password:
               <input type='password' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
             </label>
+            {passwordStatus && <p className='error-message'>{passwordStatus}</p>}
+            {loginStatus && <p className='error-message'>{loginStatus}</p>}
             <button type='submit'>Create Account</button>
           </form>
           <button type='button' onClick={props.toggle}>Close</button>

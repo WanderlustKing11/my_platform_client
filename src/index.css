@@ -126,6 +126,12 @@ button:active {
   color: #3992ff;
 }
 
+/* /// Register /// */
+
+.error-message {
+  color: #db0303;
+}
+
 /* /// Login /// */
 
 .popup {
