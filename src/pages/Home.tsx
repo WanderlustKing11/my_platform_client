@@ -1,38 +1,23 @@
 import { useState } from 'react';
 import Header from '../components/Header';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Login from './Login';
+import Register from './Register';
 
 export default function Home() {
-  const [seen, setSeen] = useState(false);
-
-  function togglePopup() {
-    setSeen(!seen);
-  }
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div>
       <Header />
       <div className='home-container'>
         <h2>Welcome To Whale Shark</h2>
-        <Link to='/register' className='home-btn'><button>Register</button></Link>
-        <button onClick={togglePopup}>Login</button>
-        {seen ? <Login toggle={togglePopup} /> : null}
+        <button onClick={() => setShowRegister(!showRegister)}>Register</button>
+        {showRegister ? <Register toggle={() => setShowRegister(false)} /> : null}
+        <button onClick={() => setShowLogin(!showLogin)}>Login</button>
+        {showLogin ? <Login toggle={() => setShowLogin(false)} /> : null}
       </div>
-
-      {/* {loading ? (
-        <div className='loader'>
-          <p>Loading </p>
-          <img className='spinner-img' id='search-spinner' src='https://bolt-gcdn.sc-cdn.net/3/8jXLtC9b4MJzw2WUAyqBK?bo=EhgaABoAMgF9OgEEQgYIp5mn9AVIAlASYAE%3D&uc=18' alt='search spinner icon' />
-        </div>
-        
-        
-      ) : (
-        <div id='sidebar'>
-          <h1>Welcome to Whale Shark</h1>
-          <FetchApiData />
-        </div>
-      )} */}
     </div>
   );
 }
