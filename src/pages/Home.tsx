@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 // import { Link } from 'react-router-dom';
-import Login from './Login';
-import Register from './Register';
+import Login from '../components/Login';
+import Register from '../components/Register';
 
 export default function Home() {
   const [showRegister, setShowRegister] = useState(false);

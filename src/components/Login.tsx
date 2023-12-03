@@ -18,7 +18,7 @@ export default function Login(props: LoginProps) {
       const response = await apiFetchLogin(username, password);
 
       if (response && response.body && response.body.username) {
-        navigate('/success', {state: { username: response.body.username } });
+        navigate('/account', {state: { username: response.body.username } });
       } else {
         setLoginStatus('Login failed. Please check your username and password.');
       }
