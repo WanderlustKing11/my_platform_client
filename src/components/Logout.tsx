@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { apiFetchLogout } from '../api/apiFetchLogout';
 
 interface LogoutProps {
   toggle: () => void;
@@ -7,7 +8,8 @@ interface LogoutProps {
 export default function Logout(props: LogoutProps) {
   const navigate = useNavigate();
 
-  function handleLogout() {
+  async function handleLogout() {
+    await apiFetchLogout();
     navigate('/');
   }
 

@@ -6,20 +6,14 @@ interface ApiResponse {
     code: number;
   }
   
-  export async function apiFetchUpdateUsername(username: string, password: string, new_username: string): Promise<ApiResponse | null> {
-    try {
-      const data = {
-        username,
-        password,
-        new_username,
-      };
-  
-      const response = await fetch('http://34.42.125.145:8080/api/update/username', {
+  export async function apiFetchLogout(): Promise<ApiResponse | null> {
+    try { 
+      const response = await fetch('http://34.42.125.145:8080/api/logout', {
         method: 'POST',
-        body: JSON.stringify(data),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
+        credentials: 'include',
       });
   
       const json = await response.json();
