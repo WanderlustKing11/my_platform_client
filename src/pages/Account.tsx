@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
-// import UpdateUsername from '../components/UpdateUsername';
+import UpdateUsername from '../components/UpdateUsername';
 // import UpdatePassword from '../components/UpdatePassword';
 
 
@@ -32,7 +32,7 @@ export default function Account() {
           <button className='update-link' onClick={toggleUpdateUsernamePopup}>
             Change/Update username
           </button>
-          {/* {showUpdateUsernamePopup && <UpdateUsername toggle={toggleUpdateUsernamePopup} />} */}
+          {showUpdateUsernamePopup && <UpdateUsername toggle={toggleUpdateUsernamePopup} />}
           <button className='update-link' onClick={toggleUpdatePasswordPopup}>
             Change/Update password
           </button>
