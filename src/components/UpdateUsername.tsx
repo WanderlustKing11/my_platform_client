@@ -17,8 +17,8 @@ export default function UpdateUsername(props: UpdateUsernameProps) {
 
     const response = await apiFetchUpdateUsername(
       location.state?.username,
-      newUsername,
-      password
+      password,
+      newUsername
     );
 
     if (response && response.body && response.body.username) {
@@ -27,6 +27,9 @@ export default function UpdateUsername(props: UpdateUsernameProps) {
     } else {
       setUpdateStatus('Could not update username.');
       console.log('Something went wrong, could not update username.');
+      // console.log('Current username: ', location.state?.username);
+      // console.log('Password: ', password);
+      // console.log('new_username: ', newUsername);
     }
   }
 
