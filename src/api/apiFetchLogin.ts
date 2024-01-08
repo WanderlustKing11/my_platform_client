@@ -28,9 +28,13 @@ export async function apiFetchLogin(username: string, password: string): Promise
   try {
     const response = await fetch(LOGIN_POST, options);
     const obj = await response.json();
+
+    console.log('Response Headers: ', response);
+
+    console.log('You are logged in!', obj)
     return obj;
   } catch (error) {
-    console.error('Uh oh, ', error);
+    console.error('Uh oh, could not log in: ', error);
     return null;
   }
 }

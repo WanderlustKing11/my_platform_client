@@ -22,10 +22,12 @@ export async function apiFetchUpdateUsername(
   const headers = new Headers();
   headers.append('Content-type', 'application/json; charset=UTF-8');
 
-  const options = {
+  const options: RequestInit = {
     method: 'POST',
+    mode: "no-cors",
     body: JSON.stringify(data),
     headers,
+    credentials: 'include',
   };
   try {
     const response = await fetch(UP_USERNAME_POST, options);
